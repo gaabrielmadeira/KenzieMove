@@ -1,23 +1,9 @@
 import { createContext, useState } from "react";
-import { TLoginForm } from "../pages/loginPage/loginForm/loginFormSchema";
-import { api } from "../services/api";
+import { TLoginForm } from "../../components/loginForm/loginFormSchema";
+import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
-export interface IuserProviderProps{
-  children: React.ReactNode;
-}
-
-export interface IuserElements {
-  email: string;
-  name: string;
-  id: number;
-}
-
-export interface Iuser{
-  accessToken: string;
-  user: IuserElements;
-}
+import { Iuser, IuserProviderProps } from "./@types";
 
 export const UserContext = createContext({} as IuserContext);
 

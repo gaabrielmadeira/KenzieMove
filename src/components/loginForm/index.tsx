@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { LoginFormSchema, TLoginForm } from "./loginFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
-import { UserContext } from "../../../providers/userContext";
+import { UserContext } from "../../providers/userContext/userContext";
 import { Link } from "react-router-dom";
 
 export const LoginForm = () => {
