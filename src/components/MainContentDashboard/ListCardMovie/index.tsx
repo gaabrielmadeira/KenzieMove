@@ -28,3 +28,4 @@ export const ListCardMovie = ({ movie }: IMovieProps) => {
     </li>
   );
 };
+

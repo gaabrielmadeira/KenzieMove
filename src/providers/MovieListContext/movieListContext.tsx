@@ -41,3 +41,4 @@ export function MovieListProvider({ children }: IMoviesProviderProps) {
     </MovieListContext.Provider>
   );
 }
+
