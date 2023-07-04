@@ -4,12 +4,20 @@ import { RegisterPage } from "../pages/registerPage";
 import { DashboardPage } from "../pages/dashboardPage";
 import { MoviePage } from "../pages/moviePage";
 import { MovieListProvider } from "../providers/MovieListContext/movieListContext";
+import { UserProvider } from "../providers/userContext/userContext";
 
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/login" element={
+        <UserProvider>
+          <LoginPage />
+        </UserProvider>} />
+      <Route path="/register" element={
+        <UserProvider>
+          <RegisterPage />
+        </UserProvider>
+      } />
 
       <Route
         path="/"
@@ -30,3 +38,4 @@ export const RoutesMain = () => {
     </Routes>
   );
 };
+

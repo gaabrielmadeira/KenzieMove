@@ -1,8 +1,6 @@
 import { useContext } from "react";
-import {
-  IMovie,
-  MovieListContext,
-} from "../../../providers/MovieListContext/movieListContext";
+import { MovieListContext} from "../../../providers/MovieListContext/movieListContext";
+import { IMovie } from "../../../providers/MovieListContext/@types";
 
 interface IMovieProps {
   movie: IMovie;
@@ -30,3 +28,4 @@ export const ListCardMovie = ({ movie }: IMovieProps) => {
     </li>
   );
 };
+
