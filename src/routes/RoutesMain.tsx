@@ -3,14 +3,30 @@ import { LoginPage } from "../pages/loginPage";
 import { RegisterPage } from "../pages/registerPage";
 import { DashboardPage } from "../pages/dashboardPage";
 import { MoviePage } from "../pages/moviePage";
+import { MovieListProvider } from "../providers/MovieListContext/movieListContext";
 
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
-      <Route path="/dashboard/movie" element={<MoviePage />} />
+
+      <Route
+        path="/"
+        element={
+          <MovieListProvider>
+            <DashboardPage />
+          </MovieListProvider>
+        }
+      />
+      <Route
+        path="/dashboard/movie"
+        element={
+          <MovieListProvider>
+            <MoviePage />
+          </MovieListProvider>
+        }
+      />
     </Routes>
   );
 };
