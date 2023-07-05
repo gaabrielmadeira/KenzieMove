@@ -1,5 +1,8 @@
+import { StyledFooter } from "./style";
+
+
 export const Footer = () => (
-  <footer>
+  <StyledFooter>
     <p>Todos os direitos reservados - Kenzie Academy Brasil</p>
-  </footer>
+  </StyledFooter>
 );
