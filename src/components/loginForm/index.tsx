@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { UserContext } from "../../providers/userContext/userContext";
 import { Link } from "react-router-dom";
+import { StyledFieldSet, StyledLoginForm, StyledMain } from "./style";
 
 export const LoginForm = () => {
   const { register,
@@ -22,23 +23,23 @@ export const LoginForm = () => {
   }
 
   return (
-    <main>
-      <form onSubmit={handleSubmit(submit)}>
-        <h1>Login</h1>
-        <fieldset>
+    <StyledMain>
+      <StyledLoginForm onSubmit={handleSubmit(submit)}>
+        <h1 className="login__title">Login</h1>
+        <StyledFieldSet>
           <input type="email" {...register("email")} />
           {errors.email && <p>{errors.email.message}</p>}
           <input type="password" {...register("password")} />
           {errors.password && <p>{errors.password.message}</p>}
           <button>Entrar</button>
-        </fieldset>
-        <div>
+        </StyledFieldSet>
+        <div className="register__button">
           <p>ou</p>
           <Link to="/register">
             <span>Cadastre-se</span>
           </Link>
         </div>
-      </form>
-    </main>
+      </StyledLoginForm>
+    </StyledMain>
   )
 }
