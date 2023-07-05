@@ -36,7 +36,7 @@ export const GlobalReset = createGlobalStyle`
   	line-height: 1;
     width: 100%;
     height: 100%;
-    background: var(--color-grey-4);
+    background: var(--color-grey-2);
   }
   ol, ul {
   	list-style: none;
@@ -64,4 +64,8 @@ export const GlobalReset = createGlobalStyle`
     box-sizing: border-box;
     background: transparent;
   }
-`
+  img {
+    box-sizing: border-box;
+    object-fit:contain;
+  }
+`;

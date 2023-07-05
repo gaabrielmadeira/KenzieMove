@@ -1,8 +1,10 @@
+import { StyledTitleOne } from "../../styles/typography";
 import { StyledFooter } from "./style";
-
 
 export const Footer = () => (
   <StyledFooter>
-    <p>Todos os direitos reservados - Kenzie Academy Brasil</p>
+    <StyledTitleOne fontSize="medium">
+      Todos os direitos reservados - Kenzie Academy Brasil
+    </StyledTitleOne>
   </StyledFooter>
 );
