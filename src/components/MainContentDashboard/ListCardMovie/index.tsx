@@ -1,6 +1,9 @@
 import { useContext } from "react";
-import { MovieListContext} from "../../../providers/MovieListContext/movieListContext";
+import { MovieListContext } from "../../../providers/MovieListContext/movieListContext";
 import { IMovie } from "../../../providers/MovieListContext/@types";
+import { StyledParagraph, StyledTitleOne } from "../../../styles/typography";
+import { StyledTags } from "../../../styles/tags";
+import { StyledList } from "./style";
 
 interface IMovieProps {
   movie: IMovie;
@@ -14,18 +17,17 @@ export const ListCardMovie = ({ movie }: IMovieProps) => {
   };
 
   return (
-    <li onClick={handleClick}>
+    <StyledList onClick={handleClick}>
       <img src={movie.image} alt="" />
       <div>
         <div>
-          <p>{movie.type}</p>
-          <p>{movie.name}</p>
+          <StyledTags>{movie.type}</StyledTags>
+          <StyledTitleOne fontSize="">{movie.name}</StyledTitleOne>
         </div>
         <div>
-          <p>{movie.duration}</p>
+          <StyledParagraph>{movie.duration} m</StyledParagraph>
         </div>
       </div>
-    </li>
+    </StyledList>
   );
 };
-

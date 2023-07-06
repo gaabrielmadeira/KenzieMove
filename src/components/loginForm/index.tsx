@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/userContext/userContext";
 import { Link } from "react-router-dom";
 import { StyledFieldSet, StyledLoginForm, StyledMain } from "./style";
+import { StyledInput } from "../../styles/form";
 
 export const LoginForm = () => {
   const { register,
@@ -27,9 +28,9 @@ export const LoginForm = () => {
       <StyledLoginForm onSubmit={handleSubmit(submit)}>
         <h1 className="login__title">Login</h1>
         <StyledFieldSet>
-          <input type="email" {...register("email")} />
+          <StyledInput type="email" inputsize="login" {...register("email")} placeholder="E-mail"/>
           {errors.email && <p>{errors.email.message}</p>}
-          <input type="password" {...register("password")} />
+          <StyledInput type="password" inputsize="login" {...register("password")} placeholder="Senha" />
           {errors.password && <p>{errors.password.message}</p>}
           <button>Entrar</button>
         </StyledFieldSet>
