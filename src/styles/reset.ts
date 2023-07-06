@@ -63,9 +63,24 @@ export const GlobalReset = createGlobalStyle`
   input{
     box-sizing: border-box;
     background: transparent;
+    border: none;
+    outline: none;
   }
   img {
     box-sizing: border-box;
     object-fit:contain;
+  }
+
+  select{
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  textarea{
+    border: none;
+    outline: none;
+    box-sizing: border-box;
   }
 `;
