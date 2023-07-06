@@ -1,40 +1,38 @@
 import { css, styled } from "styled-components";
 
 interface IFontSizeProps {
-  fontSize: "large" | "medium" | "h3" | "";
+  fontSize: "large" | "medium";
 }
 
-export const TitleStyles = css<IFontSizeProps>`
+export const TitleStyles = css`
   color: var(--color-white);
   font-family: var(--font-primary);
   font-weight: 700;
   font-style: normal;
   line-height: normal;
-  ${({ fontSize }) => {
-    switch (fontSize) {
-      case "large":
-        return "font-size: var(--font-size-2);";
-      case "medium":
-        return "font-size: var(--font-size-4);";
-      case "h3":
-        return "font-size: var(--font-size-3);";
-      case "":
-        return "font-size: var(--font-size-1);";
-    }
-  }}
 `;
 
 export const StyledTitleOne = styled.h1<IFontSizeProps>`
   ${TitleStyles}
+
+  ${({ fontSize }) => {
+    switch (fontSize) {
+      case "large":
+        return "font-size: clamp( var(--font-size-4),100%, var(--font-size-1))";
+      case "medium":
+        return "font-size: clamp( var(--font-size-4),100%, var(--font-size-2))";
+    }
+  }}
 `;
 
-export const StyledTitleThree = styled.h3<IFontSizeProps>`
+export const StyledTitleThree = styled.h3`
   ${TitleStyles}
+  font-size: var(--font-size-3)
 `;
 
 export const StyledParagraph = styled.p`
   color: var(--color-white);
-  font-size: var(--font-size-5);
+  font-size: clamp(var(--font-size-7), 100%, var(--font-size-5));
   font-family: var(--font-secundary);
   font-style: normal;
   font-weight: 400;
@@ -43,7 +41,7 @@ export const StyledParagraph = styled.p`
 
 export const StyledMenuItem = styled.p`
   color: var(--color-white);
-  font-size: var(--font-size-6);
+  font-size: clamp(var(--font-size-7), 100%, var(--font-size-6));
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 700;

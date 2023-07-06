@@ -9,7 +9,7 @@ export const Header = () => (
 
     <div>
       <Link to={"/register"}>
-        <StyledButton buttonsize="transparent">Cadastre-se</StyledButton>
+        <StyledButton buttonsize="transparent-m">Cadastre-se</StyledButton>
       </Link>
       <Link to={"/login"}>
         <StyledButton buttonsize="medium">Entrar</StyledButton>
