@@ -4,7 +4,7 @@ import { StyledButton } from "../../styles/buttons";
 import { StyledHeader } from "./style";
 
 export const Header = () => (
-  <StyledHeader visible="transparent">
+  <StyledHeader>
     <img src={kenziemovie} alt="imagem logo" width="50px" height="50px" />
 
     <div>
