@@ -1,10 +1,12 @@
 import { styled } from "styled-components";
 
 export const StyledHeader = styled.header`
+border: 1px solid red;
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin: 30px 0;
+
   img {
     width: 9%;
   }
