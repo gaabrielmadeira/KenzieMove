@@ -83,4 +83,8 @@ export const GlobalReset = createGlobalStyle`
     outline: none;
     box-sizing: border-box;
   }
+
+  a{
+    text-decoration: none;
+  }
 `;

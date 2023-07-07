@@ -5,6 +5,7 @@ export const StyledMain = styled.main`
   align-items: center;
   justify-content: center;
   margin: 20px 0;
+  padding: 0 1rem;
   ul {
     display: flex;
     flex-wrap: wrap;

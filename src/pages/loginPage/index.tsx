@@ -1,14 +1,19 @@
 import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
 import { LoginForm } from "../../components/loginForm";
-
-
+import { LoginHeader } from "../../components/loginHeader";
+import { StyledContainer, StyledContainerImage, StyledMain } from "./style";
 
 export const LoginPage = () => {
   return (
     <>
-      <Header />
-      <LoginForm />
+      <StyledContainerImage>
+        <StyledContainer>
+          <LoginHeader />
+          <StyledMain>
+            <LoginForm />
+          </StyledMain>
+        </StyledContainer>
+      </StyledContainerImage>
       <Footer />
     </>
   )

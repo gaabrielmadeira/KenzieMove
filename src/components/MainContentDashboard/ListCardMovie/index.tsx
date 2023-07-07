@@ -22,7 +22,7 @@ export const ListCardMovie = ({ movie }: IMovieProps) => {
       <div>
         <div>
           <StyledTags>{movie.type}</StyledTags>
-          <StyledTitleOne fontSize="">{movie.name}</StyledTitleOne>
+          <StyledTitleOne fontSize="large">{movie.name}</StyledTitleOne>
         </div>
         <div>
           <StyledParagraph>{movie.duration} m</StyledParagraph>
