@@ -27,7 +27,7 @@ export const LoginForm = () => {
 
   return (
     <StyledLoginForm onSubmit={handleSubmit(submit)}>
-      <StyledTitleOne fontSize="" className="login__title">Login</StyledTitleOne>
+      <StyledTitleOne fontSize="large">Login</StyledTitleOne>
       <StyledFieldSet>
         <StyledInput type="email" inputsize="login" {...register("email")} placeholder="E-mail" />
         {errors.email && <StyledMenuItem color="yellow">{errors.email.message}</StyledMenuItem>}
