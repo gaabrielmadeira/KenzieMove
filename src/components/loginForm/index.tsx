@@ -6,13 +6,18 @@ import { UserContext } from "../../providers/userContext/userContext";
 import { Link } from "react-router-dom";
 import { StyledFieldSet, StyledLoginForm } from "./style";
 import { StyledInput } from "../../styles/form";
-import { StyledMenuItem, StyledParagraph, StyledTitleOne } from "../../styles/typography";
+import {
+  StyledMenuItem,
+  StyledParagraph,
+  StyledTitleOne,
+} from "../../styles/typography";
 import { StyledButton } from "../../styles/buttons";
 
 export const LoginForm = () => {
-  const { register,
+  const {
+    register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm<TLoginForm>({
     resolver: zodResolver(LoginFormSchema),
     mode: "onBlur",
@@ -23,16 +28,34 @@ export const LoginForm = () => {
 
   const submit: SubmitHandler<TLoginForm> = (formData) => {
     userLogin(formData);
-  }
+  };
 
   return (
     <StyledLoginForm onSubmit={handleSubmit(submit)}>
-      <StyledTitleOne fontSize="" className="login__title">Login</StyledTitleOne>
+      <StyledTitleOne fontSize="large" className="login__title">
+        Login
+      </StyledTitleOne>
       <StyledFieldSet>
-        <StyledInput type="email" inputsize="login" {...register("email")} placeholder="E-mail" />
-        {errors.email && <StyledMenuItem color="yellow">{errors.email.message}</StyledMenuItem>}
-        <StyledInput type="password" inputsize="login" {...register("password")} placeholder="Senha" />
-        {errors.password && <StyledMenuItem color="yellow">{errors.password.message}</StyledMenuItem>}
+        <StyledInput
+          type="email"
+          inputsize="login"
+          {...register("email")}
+          placeholder="E-mail"
+        />
+        {errors.email && (
+          <StyledMenuItem color="yellow">{errors.email.message}</StyledMenuItem>
+        )}
+        <StyledInput
+          type="password"
+          inputsize="login"
+          {...register("password")}
+          placeholder="Senha"
+        />
+        {errors.password && (
+          <StyledMenuItem color="yellow">
+            {errors.password.message}
+          </StyledMenuItem>
+        )}
         <StyledButton buttonsize="login">Entrar</StyledButton>
       </StyledFieldSet>
       <div className="register-container">
@@ -42,5 +65,5 @@ export const LoginForm = () => {
         </Link>
       </div>
     </StyledLoginForm>
-  )
+  );
 };

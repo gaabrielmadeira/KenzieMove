@@ -32,7 +32,7 @@ export const RegisterForm = () => {
           <StyledParagraph>
             Preencha os campos para cadastrar-se
           </StyledParagraph>
-          <Link to={"/"}>
+          <Link to={"/"} className="Link ">
             <StyledButton buttonsize="transparent-yellow">
               ⇐ Voltar
             </StyledButton>
