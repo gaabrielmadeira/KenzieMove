@@ -7,7 +7,7 @@ export const StyledHeader = styled.header`
   margin: 30px 0;
 
   img {
-    width: 9%;
+    width: 150px;
   }
   div {
     display: flex;

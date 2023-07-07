@@ -10,7 +10,13 @@ const StyledDefault = css`
   line-height: 1.625rem;
 `;
 interface IStyledButtonProps {
-  buttonsize: "login" | "small" | "medium" | "large" | "transparent";
+  buttonsize:
+    | "login"
+    | "small"
+    | "medium"
+    | "large"
+    | "transparent"
+    | "transparent-m";
 }
 export const StyledButton = styled.button<IStyledButtonProps>`
   ${StyledDefault}
@@ -39,12 +45,22 @@ export const StyledButton = styled.button<IStyledButtonProps>`
         `;
       case "transparent":
         return css`
-          width: auto;
+           width: auto;
           height: 4.1875rem;
           color: var(--color-white);
           background: transparent;
           font-size: clamp(var(--font-size-8), 4vw, var(--font-size-7));
-       `
-     }
+        `;
+      case "transparent-m":
+        return css`
+          width: auto;
+          height: 3.375rem;
+          color: var(--color-white);
+          background: transparent;
+          @media (max-width: 500px) {
+            display: none;
+          }
+        `;
+    }
   }}
-`
+`;
