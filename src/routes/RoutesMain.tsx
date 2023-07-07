@@ -4,37 +4,41 @@ import { RegisterPage } from "../pages/registerPage";
 import { DashboardPage } from "../pages/dashboardPage";
 import { MoviePage } from "../pages/moviePage";
 import { MovieListProvider } from "../providers/MovieListContext/movieListContext";
-import { UserProvider } from "../providers/userContext/userContext";
+import { ProtectRoutes } from "./protectRoutes";
+import { PublicRoutes } from "./publicRoutes";
 
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/login" element={
-        <UserProvider>
-          <LoginPage />
-        </UserProvider>} />
-      <Route path="/register" element={
-        <UserProvider>
-          <RegisterPage />
-        </UserProvider>
-      } />
+      <Route element={<PublicRoutes />}>
+        <Route path="/login" element={
+            <LoginPage />
+        } />
 
-      <Route
-        path="/"
-        element={
-          <MovieListProvider>
-            <DashboardPage />
-          </MovieListProvider>
-        }
-      />
-      <Route
-        path="/dashboard/movie"
-        element={
-          <MovieListProvider>
-            <MoviePage />
-          </MovieListProvider>
-        }
-      />
+        <Route path="/register" element={
+            <RegisterPage />
+        } />
+
+        <Route
+          path="/"
+          element={
+            <MovieListProvider>
+                <DashboardPage />
+            </MovieListProvider>
+          }
+        />
+      </Route>
+
+      <Route element={<ProtectRoutes />}>
+        <Route
+          path="/dashboard/movie"
+          element={
+            <MovieListProvider> 
+                <MoviePage />
+            </MovieListProvider>
+          }
+        />
+      </Route>
     </Routes>
   );
 };
