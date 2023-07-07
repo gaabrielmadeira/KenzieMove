@@ -7,6 +7,7 @@ import { StyledInput } from "../../styles/form";
 import { StyledMain, StyledRegisterDiv, StyledRegisterForm } from "./style";
 import { StyledParagraph, StyledTitleOne } from "../../styles/typography";
 import { StyledButton } from "../../styles/buttons";
+import { Link } from "react-router-dom";
 
 export const RegisterForm = () => {
   const {
@@ -31,7 +32,11 @@ export const RegisterForm = () => {
           <StyledParagraph>
             Preencha os campos para cadastrar-se
           </StyledParagraph>
-          <StyledButton buttonsize="transparent-yellow"> ⇐ Voltar</StyledButton>
+          <Link to={"/"}>
+            <StyledButton buttonsize="transparent-yellow">
+              ⇐ Voltar
+            </StyledButton>
+          </Link>
         </div>
       </StyledRegisterDiv>
       <StyledRegisterForm onSubmit={handleSubmit(submit)} noValidate>
