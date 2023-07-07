@@ -1,3 +1,4 @@
+
 import { styled, css } from "styled-components";
 const StyledDefault = css`
   background: var(--color-yellow);
@@ -16,7 +17,8 @@ interface IStyledButtonProps {
     | "medium"
     | "large"
     | "transparent"
-    | "transparent-m";
+    | "transparent-m"
+    | "transparent-yellow";
 }
 export const StyledButton = styled.button<IStyledButtonProps>`
   ${StyledDefault}
@@ -45,10 +47,11 @@ export const StyledButton = styled.button<IStyledButtonProps>`
         `;
       case "transparent":
         return css`
-          width: auto;
-          height: 3.375rem;
+           width: auto;
+          height: 4.1875rem;
           color: var(--color-white);
           background: transparent;
+          font-size: clamp(var(--font-size-8), 4vw, var(--font-size-7));
         `;
       case "transparent-m":
         return css`
@@ -60,6 +63,14 @@ export const StyledButton = styled.button<IStyledButtonProps>`
             display: none;
           }
         `;
+      case "transparent-yellow":
+        return css`
+          padding: 1rem;
+          color: var(--color-yellow);
+          background: transparent;
+          font-size: clamp(var(--font-size-7), 100%, var(--font-size-6));
+        `;
     }
   }}
 `;
+
