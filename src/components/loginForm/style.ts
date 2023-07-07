@@ -1,36 +1,15 @@
 import { styled } from "styled-components";
-import loginImage from "../../assets/loginImage.svg";
-
-export const StyledMain = styled.main`
-    border: 1px solid red;
-    width: 100%;
-    height: 934px;
-
-    background-image: url(${loginImage});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
 
 export const StyledLoginForm = styled.form`
-border: 1px solid red;
-  width: clamp(280px, 45%, 659px);
-  height: 572px;
+  width: clamp(16.25rem, 50vw, 41.1875rem);
+  height: 35.75rem;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 
-  padding: 2.1875rem;
-
-  .login__title{
-    margin-bottom: 1.25rem;
-    color: #FFF;
-  }
+  padding: 2.1875rem 2.1875rem 2.1875rem 2.1875rem;
+  background: var(--color-grey-2);
 
   .register__button{
     display: flex;
@@ -38,17 +17,19 @@ border: 1px solid red;
     justify-content: space-between;
     align-items: center;
     gap: 0.9375rem;
-
-    margin-top: 1.25rem;
   }
 
-  .register__button> p{
-    color: #FFF;
+  .register-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
   }
 `
 
 export const StyledFieldSet = styled.fieldset`
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: 1.25rem;
 `

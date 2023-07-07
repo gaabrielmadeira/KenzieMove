@@ -18,5 +18,6 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-5: 1.125rem;
     --font-size-6: 1.0625rem;
     --font-size-7: 1rem;
+    --font-size-8: 0.75rem;
   }
-`;
+`
