@@ -20,4 +20,5 @@ export interface IReviewContext{
     editReview: (formData: IReviewForm, reviewId: string) => void
     editingReview: IReview | null
     setEditingReview: React.Dispatch<React.SetStateAction< IReview | null>>
+    setReviewList: React.Dispatch<React.SetStateAction<IReview[]>>
 }

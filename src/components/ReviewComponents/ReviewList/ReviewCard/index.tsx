@@ -9,7 +9,7 @@ export const ReviewCard = ({review}:IReviewCardProps) => {
     return(
         <li>
             <img src="" alt="" />
-            <h2>Nota da avaliação</h2>
+            <h2>{review.score}</h2>
             <p>{review.description}</p>
             <p>Nome do autor</p>
         </li>

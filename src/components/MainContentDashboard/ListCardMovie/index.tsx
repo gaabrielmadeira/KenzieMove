@@ -1,19 +1,20 @@
-import { useContext } from "react";
-import { MovieListContext } from "../../../providers/MovieListContext/movieListContext";
 import { IMovie } from "../../../providers/MovieListContext/@types";
 import { StyledParagraph, StyledTitleOne } from "../../../styles/typography";
 import { StyledTags } from "../../../styles/tags";
 import { StyledList } from "./style";
+import { useNavigate } from "react-router-dom";
+useNavigate
 
 interface IMovieProps {
   movie: IMovie;
 }
 
+
 export const ListCardMovie = ({ movie }: IMovieProps) => {
-  const { getMovieDetailsWithReviews } = useContext(MovieListContext);
+  const navigate = useNavigate();
 
   const handleClick: React.MouseEventHandler<HTMLLIElement> = () => {
-    getMovieDetailsWithReviews(movie.id);
+    navigate(`/dashboard/movie/${movie.id}`);
   };
 
   return (

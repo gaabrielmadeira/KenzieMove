@@ -5,6 +5,7 @@ import { DashboardPage } from "../pages/dashboardPage";
 import { MoviePage } from "../pages/moviePage";
 import { MovieListProvider } from "../providers/MovieListContext/movieListContext";
 import { UserProvider } from "../providers/userContext/userContext";
+import { ReviewProvider } from "../providers/ReviewsContext/ReviewsContext";
 
 export const RoutesMain = () => {
   return (
@@ -28,11 +29,11 @@ export const RoutesMain = () => {
         }
       />
       <Route
-        path="/dashboard/movie"
+        path="/dashboard/movie/:id"
         element={
-          <MovieListProvider>
+          <ReviewProvider>
             <MoviePage />
-          </MovieListProvider>
+          </ReviewProvider>
         }
       />
     </Routes>
