@@ -41,8 +41,10 @@ export const EditReviewModal = ({ setIsOpenEdit }) => {
   return (
     <div role="dialog">
       <div>
-        <h1>Editar Avaliação</h1>
-
+        <div>
+          <h1>Editar Avaliação</h1>
+          <img src="" alt="" />
+        </div>
         <form onSubmit={() => handleSubmit(submit)}>
           <select {...register("score")}>
             <option value="1">1</option>
@@ -55,8 +57,10 @@ export const EditReviewModal = ({ setIsOpenEdit }) => {
 
           <input type="text" {...register("description")} />
           {errors.description ? <p>{errors.description.message}</p> : null}
+          <button>Avaliação</button>
         </form>
       </div>
     </div>
   );
 };
+
