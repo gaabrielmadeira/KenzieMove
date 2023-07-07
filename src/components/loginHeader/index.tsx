@@ -1,19 +1,18 @@
 import { Link } from "react-router-dom";
-import kenziemovie from "../../assets/kenziemovie.svg";
 import { StyledButton } from "../../styles/buttons";
-import { StyledHeader } from "./style";
+import  kenziemovie  from "../../assets/kenziemovie.svg";
+import { StyledLoginHeader } from "./style";
 
-export const Header = () => (
-  <StyledHeader>
+export const LoginHeader = () => (
+  <StyledLoginHeader>
     <img className="image" src={kenziemovie} alt="imagem logo" />
-
-    <div>
+    <div className="buttons-container">
       <Link to={"/register"}>
         <StyledButton buttonsize="transparent">Cadastre-se</StyledButton>
       </Link>
       <Link to={"/login"}>
-        <StyledButton buttonsize="medium">Entrar</StyledButton>
+        <StyledButton className="login-button" buttonsize="medium">Entrar</StyledButton>
       </Link>
     </div>
-  </StyledHeader>
+  </StyledLoginHeader>
 );

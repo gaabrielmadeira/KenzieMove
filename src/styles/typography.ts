@@ -41,8 +41,23 @@ export const StyledParagraph = styled.p`
   line-height: normal;
 `;
 
-export const StyledMenuItem = styled.p`
-  color: var(--color-white);
+interface ITextMenuItemProps{
+  color?: "yellow"
+}
+
+export const StyledMenuItem = styled.p<ITextMenuItemProps>`
+  ${({color}) => {
+    switch (color) {
+      case "yellow":
+          return css`
+            color: var(--color-yellow);
+          `
+      default:
+        return css`
+          color: var(--color-white);
+        `
+    }
+  }}
   font-size: var(--font-size-6);
   font-family: var(--font-primary);
   font-style: normal;
