@@ -21,12 +21,16 @@ export const UserProvider = ({children}: IuserProviderProps) => {
   const userLogin = async (formData: TLoginForm) => {
     try {
       const response = await api.post<Iuser>("/login", formData);
-      toast.success("Login realizado com sucesso");
+      toast.success("Login realizado com sucesso", {
+        theme: "dark",
+      });
       setUser(response.data);
       localStorage.setItem("@TOKEN", response.data.accessToken);
-      navigate("/");
+      navigate("/dashboard/movie");
     } catch (error) {
-        toast.error("Email ou senha inválidos");
+        toast.error("Email ou senha inválidos", {
+          theme: "dark",
+        });
     }
   }
 
@@ -34,11 +38,15 @@ export const UserProvider = ({children}: IuserProviderProps) => {
   const userRegister = async(formData: TRegisterForm) => {
     try{
       const response = await api.post<Iregister>("/users", formData)
-      toast.success("Cadastro realizado com sucesso")
+      toast.success("Cadastro realizado com sucesso", {
+        theme: "dark",
+      })
       navigate("/login")
       
       } catch (error){
-        toast.error("algo deu errado")
+        toast.error("algo deu errado", {
+          theme: "dark",
+        })
       }
     }
   

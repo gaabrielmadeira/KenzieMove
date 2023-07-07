@@ -45,10 +45,11 @@ export const StyledButton = styled.button<IStyledButtonProps>`
         `;
       case "transparent":
         return css`
-          width: auto;
-          height: 3.375rem;
+           width: auto;
+          height: 4.1875rem;
           color: var(--color-white);
           background: transparent;
+          font-size: clamp(var(--font-size-8), 4vw, var(--font-size-7));
         `;
       case "transparent-m":
         return css`
