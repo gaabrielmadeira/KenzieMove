@@ -35,17 +35,17 @@ export const StyledRegisterDiv = styled.div`
 
   padding: 1rem;
 
-  div {
+  > div {
     display: flex;
     flex-direction: column;
     gap: 15px;
 
-    button {
+    .Link {
       position: relative;
       align-self: end;
-      bottom: 99px;
-      @media (max-width: 365px) {
-        bottom: 120px;
+      bottom: 93px;
+      @media (max-width: 328px) {
+        bottom: 113px;
       }
     }
   }
