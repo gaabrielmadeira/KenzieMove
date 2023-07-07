@@ -1,3 +1,4 @@
+
 import { styled, css } from "styled-components";
 const StyledDefault = css`
   background: var(--color-yellow);
@@ -16,7 +17,8 @@ interface IStyledButtonProps {
     | "medium"
     | "large"
     | "transparent"
-    | "transparent-m";
+    | "transparent-m"
+    | "transparent-yellow";
 }
 export const StyledButton = styled.button<IStyledButtonProps>`
   ${StyledDefault}
@@ -61,6 +63,14 @@ export const StyledButton = styled.button<IStyledButtonProps>`
             display: none;
           }
         `;
+      case "transparent-yellow":
+        return css`
+          padding: 1rem;
+          color: var(--color-yellow);
+          background: transparent;
+          font-size: clamp(var(--font-size-7), 100%, var(--font-size-6));
+        `;
     }
   }}
 `;
+
