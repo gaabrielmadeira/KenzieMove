@@ -5,7 +5,11 @@ import { UserContext } from "../../providers/userContext/userContext";
 import { useContext } from "react";
 import { StyledInput } from "../../styles/form";
 import { StyledMain, StyledRegisterDiv, StyledRegisterForm } from "./style";
-import { StyledParagraph, StyledTitleOne } from "../../styles/typography";
+import {
+  StyledMenuItem,
+  StyledParagraph,
+  StyledTitleOne,
+} from "../../styles/typography";
 import { StyledButton } from "../../styles/buttons";
 import { Link } from "react-router-dom";
 
@@ -48,7 +52,11 @@ export const RegisterForm = () => {
               placeholder="Seu nome"
               {...register("name")}
             />
-            {errors.name && <p>{errors.name.message}</p>}
+            {errors.name && (
+              <StyledMenuItem color="yellow">
+                {errors.name.message}
+              </StyledMenuItem>
+            )}
           </div>
 
           <div>
@@ -58,7 +66,11 @@ export const RegisterForm = () => {
               placeholder="Seu e-mail"
               {...register("email")}
             />
-            {errors.email && <p>{errors.email.message}</p>}
+            {errors.email && (
+              <StyledMenuItem color="yellow">
+                {errors.email.message}
+              </StyledMenuItem>
+            )}
           </div>
 
           <div>
@@ -68,7 +80,11 @@ export const RegisterForm = () => {
               placeholder="Crie uma senha"
               {...register("password")}
             />
-            {errors.password && <p>{errors.password.message}</p>}
+            {errors.password && (
+              <StyledMenuItem color="yellow">
+                {errors.password.message}
+              </StyledMenuItem>
+            )}
           </div>
 
           <div>
@@ -78,7 +94,11 @@ export const RegisterForm = () => {
               placeholder="Confirme sua senha"
               {...register("confirm")}
             />
-            {errors.confirm && <p>{errors.confirm.message}</p>}
+            {errors.confirm && (
+              <StyledMenuItem color="yellow">
+                {errors.confirm.message}
+              </StyledMenuItem>
+            )}
           </div>
         </div>
 
