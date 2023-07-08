@@ -1,27 +1,45 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { IMovie } from "../../providers/MovieListContext/@types";
-import { ReviewContext } from "../../providers/ReviewsContext/ReviewsContext";
 import { api } from "../../services/api";
 import { StyledTags } from "../../styles/tags";
-import { StyledTitleOne, StyledParagraph } from "../../styles/typography";
+import {
+  StyledTitleOne,
+  StyledParagraph,
+  StyledMenuItem,
+} from "../../styles/typography";
 import { StyledDiv } from "./style";
+
+interface IReviewList {
+  id: number;
+  name: string;
+  type: string;
+  duration: number;
+  synopsis: string;
+  image: string;
+  reviews: IReview[];
+}
+interface IReview {
+  id: number;
+  movieId: number;
+  userId: number;
+  score: number;
+  description: string;
+}
 
 export const LoadMovieDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [movie, setMovie] = useState<IMovie | null>(null);
-  const { setReviewList } = useContext(ReviewContext);
+  const [movie, setMovie] = useState<IReviewList | null>(null);
+  const [score, setScore] = useState<any>(null);
 
   useEffect(() => {
     const loadMovie = async () => {
-      console.log(id);
       try {
         const { data } = await api.get(`/movies/${id}?_embed=reviews`);
 
         setMovie(data);
-        setReviewList(data.reviews);
+        console.log(data);
       } catch (error) {
         console.log(error);
         navigate("/");
@@ -29,6 +47,19 @@ export const LoadMovieDetails = () => {
     };
     loadMovie();
   }, []);
+
+  useEffect(() => {
+    const scoreReviews = () => {
+      const totalReviews = movie?.reviews.length || 0;
+      const totalScore: number = movie?.reviews
+        ? movie.reviews.reduce((sum, review) => sum + +review.score, 0)
+        : 0;
+
+      const averageScore = totalReviews > 0 ? totalScore / totalReviews : 0;
+      setScore(averageScore.toFixed(1));
+    };
+    scoreReviews();
+  });
   return (
     <StyledDiv>
       <img src={movie?.image} alt="" />
@@ -39,6 +70,9 @@ export const LoadMovieDetails = () => {
         </div>
         <div className="div-duration">
           <StyledParagraph>{movie?.duration}m</StyledParagraph>
+          <StyledParagraph>
+            <span>☆</span> {score}
+          </StyledParagraph>
         </div>
       </div>
       <div>

@@ -23,6 +23,9 @@ export const StyledDiv = styled.div`
       display: flex;
       flex-direction: column;
       gap: 15px;
+      span {
+        color: var(--color-yellow);
+      }
     }
   }
 `;
