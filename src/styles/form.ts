@@ -39,10 +39,15 @@ export const StyledInput = styled.input<IStyledInputProps>`
 `;
 
 export const StyledSelect = styled.select`
-  ${StyledFormDefault}
+  background: var(--color-grey-1);
+  height: 2.35rem;
+  color: var(--color-white);
 `;
 export const StyledTextArea = styled.textarea`
   ${StyledFormDefault}
+  height: 12.35rem;
+  resize: none;
+  color: var(--color-white);
 
   &::placeholder {
     ${StyledText}
