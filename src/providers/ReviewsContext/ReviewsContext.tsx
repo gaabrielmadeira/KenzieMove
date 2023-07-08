@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
 import { IReview, IReviewContext, IReviewProviderProps } from "./@types";
 import { IReviewForm } from "../../components/ReviewComponents/ReviewForms/AddForm/ReviewFormSchema";
+import { useParams } from "react-router-dom";
+import { api } from "../../services/api";
 
 export const ReviewContext = createContext({} as IReviewContext);
 
@@ -9,14 +11,37 @@ export const ReviewProvider = ({ children }: IReviewProviderProps) => {
 
   const [editingReview, setEditingReview] = useState<IReview | null>(null);
 
-  const addReview = (
-    formData: IReviewForm,
-    movieId: string,
-    userId: string
+  const { id } = useParams();
+  const movieId = id ?? "";
+  const userId = localStorage.getItem("@USERID") ?? "";
+
+
+  const addReview = async (
+    formData: IReviewForm
   ) => {
-    const newReview = { id: crypto.randomUUID(), movieId, userId, ...formData };
-    setReviewList((reviewList) => [...reviewList, newReview]);
+
+    try {
+      const token = localStorage.getItem("@TOKEN")
+
+      const newReview = { id: crypto.randomUUID(), movieId, userId, ...formData };
+
+      console.log(newReview)
+
+      const { data } = await api.post("/reviews", newReview, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      })
+
+      setReviewList((reviewList) => [...reviewList, data])
+      console.log("reviewList")
+    } catch (error) {
+      console.log(error)
+    }
   };
+
+
+
 
   const deleteReview = (reviewId: string) => {
     if (confirm("Você deseja mesmo excluir esta análise?")) {

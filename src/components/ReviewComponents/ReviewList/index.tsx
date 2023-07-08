@@ -17,12 +17,15 @@ export const AvaliableReviews = () => {
   const { reviewList } = useContext(ReviewContext);
   const { user } = useContext(UserContext);
 
+  const userId = localStorage.getItem("@USERID")
+ 
+
   const allReviewsLessUser = reviewList.filter(
-    (review) => review.userId.toString() !== user?.user.id.toString()
+    (review) => review.userId.toString() !== userId
   );
 
   const userReview = reviewList.find(
-    (review) => review.userId.toString() === user?.user.id.toString()
+    (review) => review.userId.toString() === userId
   );
 
   return (

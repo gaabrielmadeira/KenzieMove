@@ -26,6 +26,7 @@ export const UserProvider = ({children}: IuserProviderProps) => {
       });
       setUser(response.data);
       localStorage.setItem("@TOKEN", response.data.accessToken);
+      localStorage.setItem("@USERID", response.data.user.id.toString());
       navigate("/");
     } catch (error) {
         toast.error("Email ou senha inválidos", {
