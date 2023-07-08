@@ -1,16 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IReview } from "../../../../providers/ReviewsContext/@types";
 import { api } from "../../../../services/api";
 import {
   StyledParagraph,
   StyledTitleOne,
-  StyledTitleThree,
   StyledMenuItem,
 } from "../../../../styles/typography";
 
 import { StyledList } from "./style";
-import { ReviewContext } from "../../../../providers/ReviewsContext/ReviewsContext";
-import { Iuser } from "../../../../providers/userContext/@types";
 
 interface IReviewCardProps {
   review: IReview;
@@ -32,6 +29,7 @@ export const ReviewCard = ({ review }: IReviewCardProps) => {
     };
     findAuthor();
   }, []);
+
 
   return (
     <StyledList>
