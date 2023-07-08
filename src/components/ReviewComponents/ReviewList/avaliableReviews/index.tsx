@@ -13,7 +13,7 @@ export const ReviewUser = ({ review }:IReviewCardProps) => {
         <div>
             <h3>Sua avaliação</h3>
             <p>{review.description}</p>
-            <button onClick={() => }>Editar</button>
+            {/* <button onClick={() => }>Editar</button> */}
             <button onClick={() => deleteReview(review.id)}>Remover</button>
         </div>
     )

@@ -16,8 +16,6 @@ interface IReviewCardProps {
 export const ReviewCard = ({ review }: IReviewCardProps) => {
   const [author, setAuthor] = useState(null);
 
-  console.log(review.userId);
-
   useEffect(() => {
     const findAuthor = async () => {
       try {
