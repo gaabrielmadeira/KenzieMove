@@ -26,7 +26,7 @@ export const UserProvider = ({children}: IuserProviderProps) => {
       });
       setUser(response.data);
       localStorage.setItem("@TOKEN", response.data.accessToken);
-      navigate("/dashboard/movie");
+      navigate("/");
     } catch (error) {
         toast.error("Email ou senha inválidos", {
           theme: "dark",
