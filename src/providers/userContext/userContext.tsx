@@ -1,33 +1,59 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { TLoginForm } from "../../components/loginForm/loginFormSchema";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { Iregister, Iuser, IuserProviderProps } from "./@types";
+import {Iregister, Iuser, IuserProviderProps } from "./@types";
 import { TRegisterForm } from "../../components/registerform/registerformschema";
-
-export const UserContext = createContext({} as IuserContext);
 
 interface IuserContext{
   userLogin: (formData: TLoginForm) => void;
-  user: Iuser | undefined;
-  userRegister: (formData: TRegisterForm) => Promise<void>
+  user: Iuser | null;
+  userRegister: (formData: TRegisterForm) => Promise<void>;
+  Logout: () => void;
+  userToken: string | null
 }
 
+export const UserContext = createContext({} as IuserContext);
+
 export const UserProvider = ({children}: IuserProviderProps) => {
-  const [user, setUser] = useState<Iuser | undefined>();
+  const [user, setUser] = useState<Iuser | null>(null);
+  const [userToken, setToken] = useState<string | null>(localStorage.getItem("@TOKEN"));
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const id = localStorage.getItem("@USERID");
+    const AutoLogin = async () => {
+      try {
+        const {data} = await api.get(`/users/${id}`);
+        setUser(data);
+      } catch (error) {
+        localStorage.removeItem("@TOKEN");
+        localStorage.removeItem("@USERID");
+      }
+    }
+  
+    if (userToken && id) {
+      AutoLogin()
+    }
+  }, [])
 
   const userLogin = async (formData: TLoginForm) => {
     try {
-      const response = await api.post<Iuser>("/login", formData);
+      const {data} = await api.post("/login", formData);
+      setUser(data.user)
+      const token = data.accessToken;
+      const UserId = data.user.id;
+      const UserName = data.user.name
+      localStorage.setItem("@TOKEN", token);
+      localStorage.setItem("@USERID", UserId.toString());
+      localStorage.setItem("@USERNAME", UserName);
       toast.success("Login realizado com sucesso", {
         theme: "dark",
       });
-      setUser(response.data);
-      localStorage.setItem("@TOKEN", response.data.accessToken);
-      localStorage.setItem("@USERID", response.data.user.id.toString());
-      navigate("/");
+
+      setToken(token);
+      navigate("/");        
     } catch (error) {
         toast.error("Email ou senha inválidos", {
           theme: "dark",
@@ -50,9 +76,18 @@ export const UserProvider = ({children}: IuserProviderProps) => {
         })
       }
     }
-  
+
+    const Logout = () => {
+      setUser(null);
+      localStorage.removeItem("@TOKEN");
+      localStorage.removeItem("@USERID");
+      localStorage.removeItem("@USERNAME");
+      setToken(null)
+    }
+    
+    
   return(
-    <UserContext.Provider value={{userLogin, user, userRegister}}>
+    <UserContext.Provider value={{userLogin, user, userRegister, Logout, userToken}}>
       {children}
     </UserContext.Provider>
   );

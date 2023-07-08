@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useContext } from "react";
 import { ReviewContext } from "../../providers/ReviewsContext/ReviewsContext";
 import { useNavigate, useParams } from "react-router-dom";
@@ -45,3 +46,4 @@ export const MoviePage = () => {
     </>
   );
 };
+
