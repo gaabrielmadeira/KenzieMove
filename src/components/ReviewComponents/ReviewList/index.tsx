@@ -36,8 +36,8 @@ export const AvaliableReviews = () => {
             ☆ Avaliar
           </StyledButton>
         </div>
-
-        <ReviewUser review={userReview}/>
+        
+        {/* <ReviewUser review={userReview}/> */}
       </StyledDivForModal>
 
       <StyledDiv>
