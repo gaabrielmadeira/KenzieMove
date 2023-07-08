@@ -2,11 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { StyledTags } from "../../styles/tags";
-import {
-  StyledTitleOne,
-  StyledParagraph,
-  StyledMenuItem,
-} from "../../styles/typography";
+import { StyledTitleOne, StyledParagraph } from "../../styles/typography";
 import { StyledDiv } from "./style";
 
 interface IReviewList {
