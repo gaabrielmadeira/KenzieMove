@@ -6,22 +6,23 @@ import { useNavigate } from "react-router-dom";
 import {Iregister, Iuser, IuserProviderProps } from "./@types";
 import { TRegisterForm } from "../../components/registerform/registerformschema";
 
-export const UserContext = createContext({} as IuserContext);
-
 interface IuserContext{
   userLogin: (formData: TLoginForm) => void;
   user: Iuser | null;
   userRegister: (formData: TRegisterForm) => Promise<void>;
+  Logout: () => void;
+  userToken: string | null
 }
+
+export const UserContext = createContext({} as IuserContext);
 
 export const UserProvider = ({children}: IuserProviderProps) => {
   const [user, setUser] = useState<Iuser | null>(null);
+  const [userToken, setToken] = useState<string | null>(localStorage.getItem("@TOKEN"));
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("@TOKEN");
     const id = localStorage.getItem("@USERID");
-  
     const AutoLogin = async () => {
       try {
         const {data} = await api.get(`/users/${id}`);
@@ -32,7 +33,7 @@ export const UserProvider = ({children}: IuserProviderProps) => {
       }
     }
   
-    if (token && id) {
+    if (userToken && id) {
       AutoLogin()
     }
   }, [])
@@ -43,12 +44,15 @@ export const UserProvider = ({children}: IuserProviderProps) => {
       setUser(data.user)
       const token = data.accessToken;
       const UserId = data.user.id;
+      const UserName = data.user.name
       localStorage.setItem("@TOKEN", token);
       localStorage.setItem("@USERID", UserId.toString());
+      localStorage.setItem("@USERNAME", UserName);
       toast.success("Login realizado com sucesso", {
         theme: "dark",
       });
-      navigate("/dashboard/movie");        
+      setToken(token);
+      navigate("/");        
     } catch (error) {
         toast.error("Email ou senha inválidos", {
           theme: "dark",
@@ -75,12 +79,14 @@ export const UserProvider = ({children}: IuserProviderProps) => {
     const Logout = () => {
       setUser(null);
       localStorage.removeItem("@TOKEN");
-      localStorage.removeItem("USERID");
+      localStorage.removeItem("@USERID");
+      localStorage.removeItem("@USERNAME");
+      setToken(null)
     }
     
     
   return(
-    <UserContext.Provider value={{userLogin, user, userRegister}}>
+    <UserContext.Provider value={{userLogin, user, userRegister, Logout, userToken}}>
       {children}
     </UserContext.Provider>
   );

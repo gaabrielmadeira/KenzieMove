@@ -13,6 +13,5 @@ export interface IMoviesProviderProps {
 
 export interface IMoviesContext {
   movieList: IMovie[];
-  getMovieDetailsWithReviews: (movieId: number) => void;
 }
 

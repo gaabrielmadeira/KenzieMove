@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import { UserContext } from "../../providers/userContext/userContext";
-import { Navigate, Outlet } from "react-router";
+// import { useContext } from "react";
+// import { UserContext } from "../../providers/userContext/userContext";
+// import { Navigate, Outlet } from "react-router";
 
-export const ProtectRoutes = () =>{
-  const { user } = useContext(UserContext);
+// export const ProtectRoutes = () =>{
+//   const { user } = useContext(UserContext);
 
-  return user ? <Outlet /> : <Navigate to="/" />
-};
+//   return user ? <Outlet /> : <Navigate to="/" />
+// };

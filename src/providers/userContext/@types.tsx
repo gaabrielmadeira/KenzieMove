@@ -2,12 +2,12 @@ export interface IuserProviderProps{
   children: React.ReactNode;
 }
 
-// export interface IAutoLoginUser {
-//   email: string;
-//   name: string;
-//   age: number;
-//   id: number;
-// }
+export interface IAutoLoginUser {
+  email: string;
+  name: string;
+  age: number;
+  id: number;
+}
 
 export interface IuserElements{
   email: string;

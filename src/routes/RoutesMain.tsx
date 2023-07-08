@@ -4,13 +4,12 @@ import { RegisterPage } from "../pages/registerPage";
 import { DashboardPage } from "../pages/dashboardPage";
 import { MoviePage } from "../pages/moviePage";
 import { MovieListProvider } from "../providers/MovieListContext/movieListContext";
-import { ProtectRoutes } from "./protectRoutes";
-import { PublicRoutes } from "./publicRoutes";
+// import { ProtectRoutes } from "./protectRoutes";
+// import { PublicRoutes } from "./publicRoutes";
 
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route element={<PublicRoutes />}>
         <Route path="/login" element={
             <LoginPage />
         } />
@@ -27,9 +26,7 @@ export const RoutesMain = () => {
             </MovieListProvider>
           }
         />
-      </Route>
 
-      <Route element={<ProtectRoutes />}>
         <Route
           path="/dashboard/movie"
           element={
@@ -38,7 +35,6 @@ export const RoutesMain = () => {
             </MovieListProvider>
           }
         />
-      </Route>
     </Routes>
   );
 };
