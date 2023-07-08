@@ -7,16 +7,19 @@ interface IReviewCardProps {
 }
 
 export const ReviewUser = ({ review }:IReviewCardProps) => {
-    const { deleteReview } = useContext(ReviewContext)
-
+    const { deleteReview, setIsOpenEdit } = useContext(ReviewContext)
 
 
     return(
         <div>
             <h3>Sua avaliação</h3>
+
             <p>{review.description}</p>
-            {/* <button onClick={() => }>Editar</button> */}
+
+            <button onClick={() => setIsOpenEdit(true)}>Editar</button>
             <button onClick={() => deleteReview(review.id)}>Remover</button>
+
+
         </div>
     )
 }

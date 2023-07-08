@@ -22,4 +22,8 @@ export interface IReviewContext {
   editingReview: IReview | null;
   setEditingReview: React.Dispatch<React.SetStateAction<IReview | null>>;
   setReviewList: React.Dispatch<React.SetStateAction<IReview[]>>;
+  setIsOpenAdd: React.Dispatch<React.SetStateAction<boolean>>
+  isOpenAdd: boolean
+  isOpenEdit: boolean
+  setIsOpenEdit: React.Dispatch<React.SetStateAction<boolean>>
 }

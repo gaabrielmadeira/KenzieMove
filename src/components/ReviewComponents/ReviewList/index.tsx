@@ -11,10 +11,8 @@ import { ReviewContext } from "../../../providers/ReviewsContext/ReviewsContext"
 import { ReviewUser } from "./avaliableReviews";
 
 export const AvaliableReviews = () => {
-  const [isOpenAdd, setIsOpenAdd] = useState<boolean>(false);
-  const [isOpenEdit, setIsOpenEdit] = useState<boolean>(false);
 
-  const { reviewList } = useContext(ReviewContext);
+  const { reviewList, setIsOpenAdd, isOpenAdd, isOpenEdit, setIsOpenEdit } = useContext(ReviewContext);
 
   const userId = localStorage.getItem("@USERID")
  
@@ -37,7 +35,7 @@ export const AvaliableReviews = () => {
           </StyledButton>
         </div>
         
-        {userReview !== undefined ? <ReviewUser review={userReview}/> : null }
+        {userReview !== undefined ? <ReviewUser review={userReview}/>  : null }
         
       </StyledDivForModal>
 
@@ -50,7 +48,8 @@ export const AvaliableReviews = () => {
       </StyledDiv>
 
       {isOpenAdd ? <AddReviewModal setIsOpenAdd={setIsOpenAdd} /> : null}
-      {isOpenEdit ? <EditReviewModal setIsOpenEdit={setIsOpenEdit} /> : null}
+      {isOpenEdit ? <EditReviewModal setIsOpenEdit={setIsOpenEdit}/> : null}
+      
     </>
   );
 };
