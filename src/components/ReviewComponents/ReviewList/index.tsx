@@ -1,28 +1,42 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ReviewContext } from "../../../providers/ReviewsContext/ReviewsContext";
 import { ReviewCard } from "./ReviewCard";
 import { UserContext } from "../../../providers/userContext/userContext";
+import { StyledUl } from "./style";
+import { StyledDiv } from "./style";
 
 export const ReviewList = () => {
-    const { reviewList } = useContext(ReviewContext)
-    const { user } = useContext(UserContext)
-    const { reviewUser, setReviewUser } = useState({})
+  const { reviewList } = useContext(ReviewContext);
+  const { user } = useContext(UserContext);
 
-    return(
-        <div>
-            <h1>
-                Avaliações
-            </h1>
-            {console.log(reviewList)}
+  const allReviewsLessUser = reviewList.filter(
+    (review) => review.userId.toString() !== user?.user.id.toString()
+  );
 
-            <p>{user?.user.name}</p>
+  const userReview = reviewList.find(
+    (review) => review.userId.toString() === user?.user.id.toString()
+  );
 
-            <ul>
-                { reviewList.map(review => (
+
+
+  return (
+    <StyledDiv>
+      <h1>Avaliações</h1>
+
+      <p>{user?.user.name}</p>
+
+      {/* { reviewList.map(review => (
                     <ReviewCard key={review.id} review={review} />
-                ))}
-            </ul>
-        </div>
+                ))} */}
 
-    )
-}
+      <StyledUl>
+        {allReviewsLessUser.map((review) => (
+          <ReviewCard
+            key={review.id}
+            review={review}
+          />
+        ))}
+      </StyledUl>
+    </StyledDiv>
+  );
+};
