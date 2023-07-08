@@ -46,12 +46,11 @@ export const AddReviewModal: React.FC<AddReviewModalProps> = ({
 
   const { addReview } = useContext(ReviewContext);
 
-  const submit = (formData: IReviewForm) => {
-    const { id } = useParams();
-    const reviewId = id ?? "";
-    const userId = localStorage.getItem("@USERID") ?? "";
-    addReview(formData, reviewId, userId);
-    setIsOpenAdd(false);
+
+  const submit = async (formData: IReviewForm) => {
+    console.log("ue")
+    addReview(formData)
+
   };
 
   return (
