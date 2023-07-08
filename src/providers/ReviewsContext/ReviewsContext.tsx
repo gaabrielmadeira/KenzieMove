@@ -6,7 +6,6 @@ export const ReviewContext = createContext({} as IReviewContext);
 
 export const ReviewProvider = ({ children }: IReviewProviderProps) => {
   const [reviewList, setReviewList] = useState<IReview[]>([]);
-  
 
   const [editingReview, setEditingReview] = useState<IReview | null>(null);
 

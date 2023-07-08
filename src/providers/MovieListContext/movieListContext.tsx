@@ -1,11 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { useNavigate } from "react-router-dom";
 import { IMovie, IMoviesContext, IMoviesProviderProps } from "./@types";
-import { IReview } from "../ReviewsContext/@types";
 
 export const MovieListContext = createContext({} as IMoviesContext);
-
 
 export function MovieListProvider({ children }: IMoviesProviderProps) {
   const [movieList, setMovieList] = useState<IMovie[]>([]);
@@ -23,13 +20,9 @@ export function MovieListProvider({ children }: IMoviesProviderProps) {
     getMoviesToList();
   }, []);
 
-
   return (
-    <MovieListContext.Provider
-      value={{ movieList}}
-    >
+    <MovieListContext.Provider value={{ movieList }}>
       {children}
     </MovieListContext.Provider>
   );
 }
-
