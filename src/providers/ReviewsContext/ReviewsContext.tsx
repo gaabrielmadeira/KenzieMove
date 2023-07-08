@@ -19,7 +19,6 @@ export const ReviewProvider = ({ children }: IReviewProviderProps) => {
   const addReview = async (
     formData: IReviewForm
   ) => {
-
     try {
       const token = localStorage.getItem("@TOKEN")
 
@@ -41,16 +40,25 @@ export const ReviewProvider = ({ children }: IReviewProviderProps) => {
   };
 
 
+  const deleteReview = async (reviewId: string) => {
+    try {
+      const token = localStorage.getItem("@TOKEN")
 
-
-  const deleteReview = (reviewId: string) => {
-    if (confirm("Você deseja mesmo excluir esta análise?")) {
-      setReviewList((reviewList) =>
-        reviewList.filter((review) => review.id !== reviewId)
-      );
+      await api.delete(`/reviews/${reviewId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      })
+      setReviewList((reviewList) => reviewList.filter(
+        (review) => review.id !== reviewId
+      ))
+    } catch (error) {
+      console.log(error)
     }
   };
 
+
+  
   const editReview = (formData: IReviewForm, reviewId: string) => {
     setReviewList((reviewList) =>
       reviewList.map((review) => {

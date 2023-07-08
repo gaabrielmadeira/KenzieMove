@@ -37,7 +37,8 @@ export const AvaliableReviews = () => {
           </StyledButton>
         </div>
         
-        {/* <ReviewUser review={userReview}/> */}
+        {userReview !== undefined ? <ReviewUser review={userReview}/> : null }
+        
       </StyledDivForModal>
 
       <StyledDiv>

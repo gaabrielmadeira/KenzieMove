@@ -9,6 +9,8 @@ interface IReviewCardProps {
 export const ReviewUser = ({ review }:IReviewCardProps) => {
     const { deleteReview } = useContext(ReviewContext)
 
+
+
     return(
         <div>
             <h3>Sua avaliação</h3>
