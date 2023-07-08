@@ -4,7 +4,7 @@ import { ReviewContext } from "../../providers/ReviewsContext/ReviewsContext";
 // import { MovieListContext } from "../../providers/MovieListContext/movieListContext";
 
 import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
+// import { Header } from "../../components/Header";
 
 import { AddReviewModal } from "../../components/ReviewComponents/ReviewModals/AddModal";
 import { EditReviewModal } from "../../components/ReviewComponents/ReviewModals/EditModal";
@@ -13,6 +13,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { ReviewList } from "../../components/ReviewComponents/ReviewList";
 import { IMovie } from "../../providers/MovieListContext/@types";
+import { LoggedHeader } from "../../components/logeedHeader";
+import { Header } from "../../components/Header";
 
 
 export const MoviePage = () => {
@@ -24,6 +26,7 @@ export const MoviePage = () => {
   const [movie, setMovie] = useState<IMovie | null>(null)
 
   const { setReviewList } = useContext(ReviewContext)
+  const token = localStorage.getItem("@TOKEN");
 
  
   useEffect(() => {
@@ -45,7 +48,7 @@ export const MoviePage = () => {
   
   return (
     <>
-      <Header />
+      {token ? <LoggedHeader/> : <Header/>}
       <p>{movie?.name}</p>
       <ReviewList />
       <Footer />
