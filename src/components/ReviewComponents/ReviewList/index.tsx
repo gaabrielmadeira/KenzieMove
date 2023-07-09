@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { StyledButton } from "../../../styles/buttons";
 import { StyledTitleOne } from "../../../styles/typography";
 import { EditReviewModal } from "../ReviewModals/EditModal";

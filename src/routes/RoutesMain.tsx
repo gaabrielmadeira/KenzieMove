@@ -3,7 +3,7 @@ import { LoginPage } from "../pages/loginPage";
 import { RegisterPage } from "../pages/registerPage";
 import { DashboardPage } from "../pages/dashboardPage";
 import { MoviePage } from "../pages/moviePage";
-import { MovieListProvider } from "../providers/MovieListContext/movieListContext";
+import { MovieListContext, MovieListProvider } from "../providers/MovieListContext/movieListContext";
 import { UserProvider } from "../providers/userContext/userContext";
 import { ReviewProvider } from "../providers/ReviewsContext/ReviewsContext";
 
@@ -32,7 +32,9 @@ export const RoutesMain = () => {
         path="/dashboard/movie/:id"
         element={
           <ReviewProvider>
-            <MoviePage />
+            <MovieListProvider>
+              <MoviePage />
+            </MovieListProvider>
           </ReviewProvider>
         }
       />

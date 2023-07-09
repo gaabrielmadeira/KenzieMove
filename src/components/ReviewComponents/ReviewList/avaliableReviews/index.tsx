@@ -18,8 +18,6 @@ export const ReviewUser = ({ review }:IReviewCardProps) => {
 
             <button onClick={() => setIsOpenEdit(true)}>Editar</button>
             <button onClick={() => deleteReview(review.id)}>Remover</button>
-
-
         </div>
     )
 }
