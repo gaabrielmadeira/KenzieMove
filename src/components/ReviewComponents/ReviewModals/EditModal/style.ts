@@ -25,6 +25,6 @@ export const ModalDiv = styled.div`
   }
 
   .modify-button{
-    width: 140px;
+    width: 180px;
   }
 `;

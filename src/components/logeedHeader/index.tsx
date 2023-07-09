@@ -21,7 +21,7 @@ export const LoggedHeader = () => {
           <StyledFirstLetterTag>{firstLetter}</StyledFirstLetterTag>
           <StyledParagraph>{UserName}</StyledParagraph>
         </div>
-        <StyledButton buttonsize="transparent">Sair</StyledButton>
+        <StyledButton buttonsize="transparent" onClick={() => {Logout()}}>Sair</StyledButton>
       </StyledDiv>
     </StyledHeader>
   );
