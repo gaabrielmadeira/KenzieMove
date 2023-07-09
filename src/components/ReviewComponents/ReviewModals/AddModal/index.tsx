@@ -88,8 +88,7 @@ export const AddReviewModal: React.FC<AddReviewModalProps> = ({
               {errors.description.message}
             </StyledMenuItem>
           ) : null}
-
-          <StyledButton buttonsize="medium" type="submit">
+          <StyledButton className="insert__review-button" buttonsize="medium" type="submit">
             ☆ Avaliar
           </StyledButton>
         </form>

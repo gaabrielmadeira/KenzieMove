@@ -13,13 +13,12 @@ import { StyledMenuItem, StyledTitleOne } from "../../../../styles/typography";
 import { StyledSelect, StyledTextArea } from "../../../../styles/form";
 import { StyledButton } from "../../../../styles/buttons";
 
-
 interface EditReviewModal {
   setIsOpenEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 
-export const EditReviewModal: React.FC<EditReviewModal> = ({ setIsOpenEdit}) => {
+export const EditReviewModal: React.FC<EditReviewModal> = ({ setIsOpenEdit }) => {
   const {
     register,
     handleSubmit,
@@ -31,7 +30,7 @@ export const EditReviewModal: React.FC<EditReviewModal> = ({ setIsOpenEdit}) => 
   const modalRef = useRef(null);
 
   useEffect(() => {
-    const handleOutClick = (e) => {
+    const handleOutClick = (e: { target: any; }) => {
       if (!modalRef.current?.contains(e.target)) {
         setIsOpenEdit(false);
       }
@@ -51,9 +50,9 @@ export const EditReviewModal: React.FC<EditReviewModal> = ({ setIsOpenEdit}) => 
   const userReview = reviewList.find(
     (review) => review.userId.toString() === userId
   );
-  
-  
-  const submit = (formData, key) => {
+
+
+  const submit = (formData: { description: string; score: string; }, key: any) => {
     editReview(formData, userReview?.id);
     setIsOpenEdit(false)
   };
@@ -95,9 +94,8 @@ export const EditReviewModal: React.FC<EditReviewModal> = ({ setIsOpenEdit}) => 
               {errors.description.message}
             </StyledMenuItem>
           ) : null}
-
-          <StyledButton buttonsize="medium" type="submit">
-            ☆ Avaliar
+          <StyledButton className="modify-button" buttonsize="medium" type="submit">
+            ☆ Atualizar
           </StyledButton>
         </form>
       </ModalDiv>

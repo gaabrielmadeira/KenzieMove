@@ -8,11 +8,13 @@ export const ModalDiv = styled.div`
   background: var(--color-grey-2);
   padding: 1rem;
   gap: 20px;
+  
   form {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
+  
   div {
     display: flex;
     justify-content: space-between;
@@ -20,5 +22,9 @@ export const ModalDiv = styled.div`
       cursor: pointer;
       padding: 5px;
     }
+  }
+
+  .modify-button{
+    width: 140px;
   }
 `;
