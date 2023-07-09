@@ -102,30 +102,5 @@ export const EditReviewModal: React.FC<EditReviewModal> = ({ setIsOpenEdit}) => 
         </form>
       </ModalDiv>
     </StyledOverlay>
-
-  //   <div role="dialog">
-  //     <div>
-  //       <h1>Editar Avaliação</h1>
-
-  //       <form onSubmit={() => handleSubmit(submit)}>
-  //         <select {...register("score")}>
-  //           <option value="1">1</option>
-  //           <option value="2">2</option>
-  //           <option value="3">3</option>
-  //           <option value="4">4</option>
-  //           <option value="5">5</option>
-  //           <option value="6">6</option>
-  //           <option value="7">7</option>
-  //           <option value="8">8</option>
-  //           <option value="9">9</option>
-  //           <option value="10">10</option>
-  //         </select>
-  //         {errors.score ? <p>{errors.score.message}</p> : null}
-
-  //         <input type="text" {...register("description")} />
-  //         {errors.description ? <p>{errors.description.message}</p> : null}
-  //       </form>
-  //     </div>
-  //   </div>
   );
 };
