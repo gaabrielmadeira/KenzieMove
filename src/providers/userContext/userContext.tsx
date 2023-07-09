@@ -82,7 +82,7 @@ export const UserProvider = ({children}: IuserProviderProps) => {
       localStorage.removeItem("@USERID");
       localStorage.removeItem("@USERNAME");
       setUser(null);
-      setToken(null);
+      setToken(null)
     }
     
     
