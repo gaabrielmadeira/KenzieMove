@@ -7,13 +7,20 @@ import { AvaliableReviews } from "../../components/ReviewComponents/ReviewList";
 import { LoadMovieDetails } from "../../components/loadMovieDetails";
 import { api } from "../../services/api";
 import { MovieListContext } from "../../providers/MovieListContext/movieListContext";
+import { StyledMovieImage } from "./style";
+import { SinopseMovie } from "../../components/sinopseMovie";
+import { StyledContainer } from "../../styles/container";
+
+export interface IBackgroundImageProps {
+  backgroundImage: string | undefined;
+}
 
 export const MoviePage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const { setReviewList } = useContext(ReviewContext);
-  const { setSelectMovie } = useContext(MovieListContext);
+  const { setSelectMovie, selectMovie } = useContext(MovieListContext);
 
   useEffect(() => {
     const loadMovie = async () => {
@@ -32,11 +39,16 @@ export const MoviePage = () => {
 
   return (
     <>
-      <div>
+      <StyledMovieImage backgroundImage={selectMovie?.image}>
         <Header />
-        <LoadMovieDetails />
-      </div>
-      <AvaliableReviews />
+        <StyledContainer>
+          <LoadMovieDetails />
+        </StyledContainer>
+      </StyledMovieImage>
+      <StyledContainer>
+        <SinopseMovie />
+        <AvaliableReviews />
+      </StyledContainer>
       <Footer />
     </>
   );

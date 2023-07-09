@@ -13,8 +13,8 @@ export interface IMoviesProviderProps {
 
 export interface IMoviesContext {
   movieList: IMovie[];
-  selectMovie: IReview | null;
-  setSelectMovie: React.Dispatch<React.SetStateAction<IReview | null>>;
+  selectMovie: IReviewList | null;
+  setSelectMovie: React.Dispatch<React.SetStateAction<IReviewList | null>>;
 }
 
 export interface IReviewList{

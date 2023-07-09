@@ -7,12 +7,20 @@ export const StyledDivForModal = styled.div`
   margin: 3rem 0;
   div {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: clamp(280px, 100%, 1550px);
     padding: 0 1rem;
+    gap: 30px;
+
+    @media(min-width: 750px){
+      flex-direction: row;
+    }
   }
 `;
+
+
 export const StyledUl = styled.ul`
   display: flex;
   width: clamp(280px, 100%, 1550px);

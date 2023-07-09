@@ -11,12 +11,9 @@ import { ReviewContext } from "../../../providers/ReviewsContext/ReviewsContext"
 import { ReviewUser } from "./avaliableReviews";
 
 export const AvaliableReviews = () => {
-
   const { reviewList, setIsOpenAdd, isOpenAdd, isOpenEdit, setIsOpenEdit } = useContext(ReviewContext);
-
   const userId = localStorage.getItem("@USERID")
- 
-
+  
   const allReviewsLessUser = reviewList.filter(
     (review) => review.userId.toString() !== userId
   );

@@ -18,9 +18,7 @@ export const LoadMovieDetails = () => {
     const loadMovie = async () => {
       try {
         const { data } = await api.get(`/movies/${id}?_embed=reviews`);
-
         setSelectMovie(data);
-        console.log(data);
       } catch (error) {
         console.log(error);
         navigate("/");
@@ -54,9 +52,6 @@ export const LoadMovieDetails = () => {
             <span>☆</span> {score}
           </StyledParagraph>
         </div>
-      </div>
-      <div>
-        <StyledParagraph>{selectMovie?.synopsis}</StyledParagraph>
       </div>
     </StyledDiv>
   );

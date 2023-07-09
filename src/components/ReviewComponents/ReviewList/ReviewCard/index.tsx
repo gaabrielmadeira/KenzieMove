@@ -8,6 +8,7 @@ import {
 } from "../../../../styles/typography";
 
 import { StyledList } from "./style";
+import { StyledFirstLetterTag } from "../../../../styles/tags";
 
 interface IReviewCardProps {
   review: IReview;
@@ -15,7 +16,8 @@ interface IReviewCardProps {
 
 export const ReviewCard = ({ review }: IReviewCardProps) => {
   const [author, setAuthor] = useState(null);
-  // const 
+  const UserName = localStorage.getItem("@USERNAME");
+  const firstLetter = UserName ? UserName.charAt(0) : "";
 
   useEffect(() => {
     const findAuthor = async () => {
@@ -32,7 +34,7 @@ export const ReviewCard = ({ review }: IReviewCardProps) => {
 
   return (
     <StyledList>
-      <StyledTitleOne fontSize="large">J</StyledTitleOne>
+      <StyledFirstLetterTag>{firstLetter}</StyledFirstLetterTag>
       <StyledMenuItem><span>☆</span> {review.score}.0</StyledMenuItem>
       <StyledParagraph>"{review.description}"</StyledParagraph>
       <StyledTitleOne fontSize="large">{author}</StyledTitleOne>
