@@ -11,14 +11,15 @@ interface IuserContext{
   user: Iuser | null;
   userRegister: (formData: TRegisterForm) => Promise<void>;
   Logout: () => void;
-  userToken: string | null
+  userToken: string | null;
+  setToken: string | null;
 }
 
 export const UserContext = createContext({} as IuserContext);
 
 export const UserProvider = ({children}: IuserProviderProps) => {
   const [user, setUser] = useState<Iuser | null>(null);
-  const [userToken, setToken] = useState<string | null>(localStorage.getItem("@TOKEN"));
+  const [userToken, setToken] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,8 +52,8 @@ export const UserProvider = ({children}: IuserProviderProps) => {
       toast.success("Login realizado com sucesso", {
         theme: "dark",
       });
-      setToken(token);
-      navigate("/");        
+      navigate("/")
+      
     } catch (error) {
         toast.error("Email ou senha inválidos", {
           theme: "dark",
@@ -77,16 +78,16 @@ export const UserProvider = ({children}: IuserProviderProps) => {
     }
 
     const Logout = () => {
-      setUser(null);
       localStorage.removeItem("@TOKEN");
       localStorage.removeItem("@USERID");
       localStorage.removeItem("@USERNAME");
+      setUser(null);
       setToken(null)
     }
     
     
   return(
-    <UserContext.Provider value={{userLogin, user, userRegister, Logout, userToken}}>
+    <UserContext.Provider value={{userLogin, user, userRegister, Logout, userToken, setToken}}>
       {children}
     </UserContext.Provider>
   );
