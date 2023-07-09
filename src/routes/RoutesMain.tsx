@@ -6,11 +6,13 @@ import { MoviePage } from "../pages/moviePage";
 import { MovieListProvider } from "../providers/MovieListContext/movieListContext";
 import { UserProvider } from "../providers/userContext/userContext";
 import { ReviewProvider } from "../providers/ReviewsContext/ReviewsContext";
+import { PublicRoutes } from "./publicRoutes";
 
 
 export const RoutesMain = () => {
   return (
     <Routes>
+      <Route element={<PublicRoutes />}>
       <Route path="/login" element={
         <UserProvider>
           <LoginPage />
@@ -20,6 +22,7 @@ export const RoutesMain = () => {
           <RegisterPage />
         </UserProvider>
       } />
+      </Route>
 
       <Route
         path="/"
