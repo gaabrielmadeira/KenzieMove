@@ -28,3 +28,4 @@ export const ReviewUser = ({ review }: IReviewCardProps) => {
       </StyledUserReview>
     </>
   )
+}

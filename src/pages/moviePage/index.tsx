@@ -10,6 +10,8 @@ import { MovieListContext } from "../../providers/MovieListContext/movieListCont
 import { StyledMovieImage } from "./style";
 import { SinopseMovie } from "../../components/sinopseMovie";
 import { StyledContainer } from "../../styles/container";
+import { UserContext } from "../../providers/userContext/userContext";
+import { LoggedHeader } from "../../components/logeedHeader";
 
 export interface IBackgroundImageProps {
   backgroundImage: string | undefined;
@@ -21,6 +23,7 @@ export const MoviePage = () => {
 
   const { setReviewList } = useContext(ReviewContext);
   const { setSelectMovie, selectMovie } = useContext(MovieListContext);
+  const { userToken } = useContext(UserContext);
 
   useEffect(() => {
     const loadMovie = async () => {
@@ -40,7 +43,7 @@ export const MoviePage = () => {
   return (
     <>
       <StyledMovieImage backgroundImage={selectMovie?.image}>
-        <Header />
+        {userToken ? <LoggedHeader /> : <Header />}
         <StyledContainer>
           <LoadMovieDetails />
         </StyledContainer>
