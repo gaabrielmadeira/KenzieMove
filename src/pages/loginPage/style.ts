@@ -11,13 +11,6 @@ export const StyledContainerImage = styled.div`
     justify-content: center;
 `
 
-export const StyledContainer = styled.div`
-  width: 100%;
-  max-width: 1200px;
-
-  padding: 0 3% 5% 3%;
-`
-
 export const StyledMain = styled.main`
   display: flex;
   justify-content: center;

@@ -12,12 +12,18 @@ export interface IReview {
   description: string;
 }
 
+// add    , movieId: string, userId: string
+
 export interface IReviewContext {
   reviewList: IReview[];
-  addReview: (formData: IReviewForm, movieId: string, userId: string) => void;
+  addReview: (formData: IReviewForm) => void;
   deleteReview: (reviewId: string) => void;
   editReview: (formData: IReviewForm, reviewId: string) => void;
   editingReview: IReview | null;
   setEditingReview: React.Dispatch<React.SetStateAction<IReview | null>>;
   setReviewList: React.Dispatch<React.SetStateAction<IReview[]>>;
+  setIsOpenAdd: React.Dispatch<React.SetStateAction<boolean>>
+  isOpenAdd: boolean
+  isOpenEdit: boolean
+  setIsOpenEdit: React.Dispatch<React.SetStateAction<boolean>>
 }

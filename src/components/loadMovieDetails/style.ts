@@ -12,17 +12,18 @@ export const StyledDiv = styled.div`
   > div {
     display: flex;
     justify-content: space-between;
+    gap: 0.9375rem;
     width: clamp(280px, 100%, 1550px);
     padding: 0 1rem;
     .div-title {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 0.9375rem;
     }
     .div-duration {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 0.9375rem;
       span {
         color: var(--color-yellow);
       }

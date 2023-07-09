@@ -9,7 +9,6 @@ interface IMovieProps {
   movie: IMovie;
 }
 
-
 export const ListCardMovie = ({ movie }: IMovieProps) => {
   const navigate = useNavigate();
 
