@@ -102,9 +102,11 @@ export const RegisterForm = () => {
           </div>
         </div>
 
-        <StyledButton buttonsize="large" type="submit">
-          Cadastrar-se
-        </StyledButton>
+        <div className="register-button">
+          <StyledButton buttonsize="large" type="submit">
+            Cadastrar-se
+          </StyledButton>
+        </div>
       </StyledRegisterForm>
     </StyledMain>
   );

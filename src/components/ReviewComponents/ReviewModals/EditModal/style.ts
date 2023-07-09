@@ -24,7 +24,7 @@ export const ModalDiv = styled.div`
     }
   }
 
-  .insert__review-button{
+  .modify-button{
     width: 140px;
   }
 `;

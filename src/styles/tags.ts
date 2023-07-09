@@ -19,7 +19,7 @@ export const StyledTags = styled.span`
   background: var(--color-yellow);
 `;
 
-export const StyledFirstLetterTag = styled.span`
+export const StyledFirstLetterTag = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,4 +29,4 @@ export const StyledFirstLetterTag = styled.span`
   border-radius: 255px;
   background: var(--color-yellow);
   ${TitleStyles}
-`
+`;

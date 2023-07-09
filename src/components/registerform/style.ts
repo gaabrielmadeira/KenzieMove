@@ -24,6 +24,12 @@ export const StyledRegisterForm = styled.form`
     grid-template-columns: 1fr 1fr;
     gap: 15px;
   }
+
+  .register-button{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
 `;
 export const StyledRegisterDiv = styled.div`
   width: clamp(280px, 100%, 1100px);

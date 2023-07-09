@@ -40,7 +40,7 @@ export const StyledInput = styled.input<IStyledInputProps>`
 
 export const StyledSelect = styled.select`
   background: var(--color-grey-1);
-  height: 2.35rem;
+  height: 3.375rem;
   color: var(--color-white);
 `;
 export const StyledTextArea = styled.textarea`

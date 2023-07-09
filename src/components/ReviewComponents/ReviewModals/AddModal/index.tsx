@@ -8,7 +8,6 @@ import {
 } from "../../ReviewForms/AddForm/ReviewFormSchema";
 import { StyledOverlay } from "../../../../styles/modal";
 import { ModalDiv } from "./style";
-import { useParams } from "react-router-dom";
 import { StyledMenuItem, StyledTitleOne } from "../../../../styles/typography";
 import { StyledSelect, StyledTextArea } from "../../../../styles/form";
 import { StyledButton } from "../../../../styles/buttons";
@@ -48,9 +47,8 @@ export const AddReviewModal: React.FC<AddReviewModalProps> = ({
 
 
   const submit = async (formData: IReviewForm) => {
-    console.log("ue")
     addReview(formData)
-
+    setIsOpenAdd(false)
   };
 
   return (
@@ -90,8 +88,7 @@ export const AddReviewModal: React.FC<AddReviewModalProps> = ({
               {errors.description.message}
             </StyledMenuItem>
           ) : null}
-
-          <StyledButton buttonsize="medium" type="submit">
+          <StyledButton className="insert__review-button" buttonsize="medium" type="submit">
             ☆ Avaliar
           </StyledButton>
         </form>

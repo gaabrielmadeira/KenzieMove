@@ -4,37 +4,41 @@ import { RegisterPage } from "../pages/registerPage";
 import { DashboardPage } from "../pages/dashboardPage";
 import { MoviePage } from "../pages/moviePage";
 import { MovieListProvider } from "../providers/MovieListContext/movieListContext";
-// import { ProtectRoutes } from "./protectRoutes";
-// import { PublicRoutes } from "./publicRoutes";
+import { UserProvider } from "../providers/userContext/userContext";
+import { ReviewProvider } from "../providers/ReviewsContext/ReviewsContext";
+
 
 export const RoutesMain = () => {
   return (
     <Routes>
-        <Route path="/login" element={
-            <LoginPage />
-        } />
+      <Route path="/login" element={
+        <UserProvider>
+          <LoginPage />
+        </UserProvider>} />
+      <Route path="/register" element={
+        <UserProvider>
+          <RegisterPage />
+        </UserProvider>
+      } />
 
-        <Route path="/register" element={
-            <RegisterPage />
-        } />
-
-        <Route
-          path="/"
-          element={
+      <Route
+        path="/"
+        element={
+          <MovieListProvider>
+            <DashboardPage />
+          </MovieListProvider>
+        }
+      />
+      <Route
+        path="/dashboard/movie/:id"
+        element={
+          <ReviewProvider>
             <MovieListProvider>
-                <DashboardPage />
+              <MoviePage />
             </MovieListProvider>
-          }
-        />
-
-        <Route
-          path="/dashboard/movie"
-          element={
-            <MovieListProvider> 
-                <MoviePage />
-            </MovieListProvider>
-          }
-        />
+          </ReviewProvider>
+        }
+      />
     </Routes>
   );
 };

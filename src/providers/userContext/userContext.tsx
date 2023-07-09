@@ -51,7 +51,6 @@ export const UserProvider = ({children}: IuserProviderProps) => {
       toast.success("Login realizado com sucesso", {
         theme: "dark",
       });
-
       setToken(token);
       navigate("/");        
     } catch (error) {
