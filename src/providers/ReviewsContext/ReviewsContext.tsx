@@ -3,6 +3,7 @@ import { IReview, IReviewContext, IReviewProviderProps } from "./@types";
 import { IReviewForm } from "../../components/ReviewComponents/ReviewForms/AddForm/ReviewFormSchema";
 import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
+import { toast } from "react-toastify";
 
 export const ReviewContext = createContext({} as IReviewContext);
 
@@ -38,6 +39,9 @@ export const ReviewProvider = ({ children }: IReviewProviderProps) => {
       setReviewList((reviewList) => [...reviewList, data]);
     } catch (error) {
       console.log(error);
+      toast.error("Apenas usuários logados podem fazer avaliações", {
+        theme: "dark",
+      });
     }
   };
 
