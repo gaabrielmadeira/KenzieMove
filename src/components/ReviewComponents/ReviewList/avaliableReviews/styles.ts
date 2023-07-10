@@ -23,6 +23,12 @@ export const StyledUserReview = styled.section`
     margin-bottom: 1.875rem;
   }
 
+  .description{
+      width: clamp(260px, 40vw, 600px);
+      height: auto;
+      word-wrap: break-word;
+    }
+
   @media(min-width: 768px){
     width: 100%;
 

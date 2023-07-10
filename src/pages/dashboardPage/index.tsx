@@ -9,10 +9,10 @@ export const DashboardPage = () => {
   const {userToken, setToken} = useContext(UserContext);
 
   useEffect(()=> {
-  const HeaderAtt = () => {
+  const HeaderAtualization = () => {
     setToken(localStorage.getItem("@TOKEN"));
   }
-    HeaderAtt()
+    HeaderAtualization()
   },[])
 
   return (

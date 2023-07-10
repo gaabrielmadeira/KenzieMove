@@ -21,7 +21,7 @@ export const StyledUl = styled.ul`
 
   @media(min-width: 875px){
     padding-left: 3%;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 `;
 
