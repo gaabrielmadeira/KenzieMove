@@ -6,7 +6,7 @@ export const StyledList = styled.li`
     align-items: center;
     gap: 20px;
 
-    width: 25rem;
+    width: 18.75rem;
     padding: 50px 0;
 
     span{

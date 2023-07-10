@@ -23,7 +23,7 @@ export const ReviewUser = ({ review }: IReviewCardProps) => {
             <button onClick={() => setIsOpenEdit(true)}><TiPencil style={{ color: "var(--color-yellow)" }} /></button>
             <button onClick={() => deleteReview(review.id)}><BsFillTrash3Fill style={{ color: "var(--color-yellow)" }} /></button>
           </div>
-          <StyledParagraph>{review.description}</StyledParagraph>
+            <StyledParagraph className="description">{review.description}</StyledParagraph>
         </div>
       </StyledUserReview>
     </>

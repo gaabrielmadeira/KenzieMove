@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, createContext, useEffect, useState } from "react";
 import { TLoginForm } from "../../components/loginForm/loginFormSchema";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
@@ -12,7 +12,7 @@ interface IuserContext{
   userRegister: (formData: TRegisterForm) => Promise<void>;
   Logout: () => void;
   userToken: string | null;
-  setToken: string | null;
+  setToken: Dispatch<SetStateAction<string | null>>;
 }
 
 export const UserContext = createContext({} as IuserContext);
@@ -78,11 +78,11 @@ export const UserProvider = ({children}: IuserProviderProps) => {
     }
 
     const Logout = () => {
+      setUser(null);
       localStorage.removeItem("@TOKEN");
       localStorage.removeItem("@USERID");
       localStorage.removeItem("@USERNAME");
-      setUser(null);
-      setToken(null)
+      setToken(null);
     }
     
     
