@@ -17,8 +17,9 @@ interface EditReviewModal {
   setIsOpenEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-
-export const EditReviewModal: React.FC<EditReviewModal> = ({ setIsOpenEdit }) => {
+export const EditReviewModal: React.FC<EditReviewModal> = ({
+  setIsOpenEdit,
+}) => {
   const {
     register,
     handleSubmit,
@@ -27,10 +28,10 @@ export const EditReviewModal: React.FC<EditReviewModal> = ({ setIsOpenEdit }) =>
     resolver: zodResolver(reviewFormSchema),
   });
 
-  const modalRef = useRef(null);
+  const modalRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const handleOutClick = (e: { target: any; }) => {
+    const handleOutClick = (e: { target: any }) => {
       if (!modalRef.current?.contains(e.target)) {
         setIsOpenEdit(false);
       }
@@ -45,16 +46,17 @@ export const EditReviewModal: React.FC<EditReviewModal> = ({ setIsOpenEdit }) =>
 
   const { editReview, reviewList } = useContext(ReviewContext);
 
-  const userId = localStorage.getItem("@USERID")
+  const userId = localStorage.getItem("@USERID");
 
   const userReview = reviewList.find(
     (review) => review.userId.toString() === userId
   );
 
-
-  const submit = (formData: { description: string; score: string; }, key: any) => {
-    editReview(formData, userReview?.id);
-    setIsOpenEdit(false)
+  const submit = (formData: { description: string; score: string }) => {
+    if (userReview && userReview.id) {
+      editReview(formData, userReview.id);
+      setIsOpenEdit(false);
+    }
   };
 
   return (
@@ -62,10 +64,12 @@ export const EditReviewModal: React.FC<EditReviewModal> = ({ setIsOpenEdit }) =>
       <ModalDiv ref={modalRef}>
         <div>
           <StyledTitleOne fontSize="large">Editar Avaliação</StyledTitleOne>
-          <StyledMenuItem onClick={() => setIsOpenEdit(false)}>X</StyledMenuItem>
+          <StyledMenuItem onClick={() => setIsOpenEdit(false)}>
+            X
+          </StyledMenuItem>
         </div>
 
-        <form key={userReview?.id} onSubmit={handleSubmit(submit)}>
+        <form onSubmit={handleSubmit(submit)}>
           <StyledSelect {...register("score")}>
             <option value="">Seleciona uma nota</option>
             <option value="1">1</option>
@@ -94,7 +98,11 @@ export const EditReviewModal: React.FC<EditReviewModal> = ({ setIsOpenEdit }) =>
               {errors.description.message}
             </StyledMenuItem>
           ) : null}
-          <StyledButton className="modify-button" buttonsize="medium" type="submit">
+          <StyledButton
+            className="modify-button"
+            buttonsize="medium"
+            type="submit"
+          >
             ☆ Atualizar
           </StyledButton>
         </form>
