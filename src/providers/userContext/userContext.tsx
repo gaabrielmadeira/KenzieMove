@@ -25,7 +25,7 @@ export const UserContext = createContext({} as IuserContext);
 
 export const UserProvider = ({ children }: IuserProviderProps) => {
   const [user, setUser] = useState<Iuser | null>(null);
-  const [userToken, setToken] = useState<string | null>(null);
+  const [userToken, setToken] = useState<string | null>(localStorage.getItem("@TOKEN"));
   const navigate = useNavigate();
 
   useEffect(() => {
